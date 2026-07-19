@@ -12335,6 +12335,7 @@
     "title": "Keyed Nonces for Frame Transactions",
     "status": "Draft",
     "requires": [
+      "7623",
       "8141"
     ],
     "isERC": false,

@@ -1,7 +1,5 @@
 import { ImageResponse } from "next/og";
-import { validEIPs } from "@/data/validEIPs";
-import { validRIPs } from "@/data/validRIPs";
-import { validCAIPs } from "@/data/validCAIPs";
+import { ogIndex } from "@/data/ogIndex";
 import { EIPStatus } from "@/utils";
 
 export const runtime = "edge";
@@ -12,12 +10,14 @@ export async function GET(req: Request) {
 
     const eipNo = parseInt(searchParams.get("eipNo")!);
     const type = searchParams.get("type") ?? "EIP";
+    // Slim precomputed index instead of the full valid-* arrays, which
+    // would blow the 1MB edge-function limit (see scripts/genOgIndex.ts).
     const eipData =
       type === "RIP"
-        ? validRIPs[eipNo]
+        ? ogIndex.rip[eipNo]
         : type === "CAIP"
-        ? validCAIPs[eipNo]
-        : validEIPs[eipNo];
+        ? ogIndex.caip[eipNo]
+        : ogIndex.eip[eipNo];
     const statusInfo = EIPStatus[eipData.status ?? "Draft"];
 
     const fontData = await fetch(

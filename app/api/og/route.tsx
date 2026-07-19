@@ -1,8 +1,9 @@
+import { readFile } from "node:fs/promises";
 import { ImageResponse } from "next/og";
 import { ogIndex } from "@/data/ogIndex";
 import { EIPStatus } from "@/utils";
 
-export const runtime = "edge";
+export const runtime = "nodejs";
 
 export async function GET(req: Request) {
   try {
@@ -20,14 +21,16 @@ export async function GET(req: Request) {
         : ogIndex.eip[eipNo];
     const statusInfo = EIPStatus[eipData.status ?? "Draft"];
 
-    const fontData = await fetch(
+    // Node runtime: read bundled assets from disk (Node's fetch rejects
+    // file:// URLs; fs accepts the import.meta.url-relative URL, which
+    // Vercel's nft traces so the asset ships with the function).
+    const fontData = await readFile(
       new URL("../../../assets/Poppins-Bold.ttf", import.meta.url)
-    ).then((res) => res.arrayBuffer());
+    );
 
-    const imgArrayBuffer = await fetch(
+    const buffer = await readFile(
       new URL("../../../public/og/base.png", import.meta.url)
-    ).then((res) => res.arrayBuffer());
-    const buffer = Buffer.from(imgArrayBuffer);
+    );
     const imgUrl = `data:image/png;base64,${buffer.toString("base64")}`;
 
     return new ImageResponse(

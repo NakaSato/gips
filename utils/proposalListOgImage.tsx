@@ -1,3 +1,4 @@
+import { readFile } from "node:fs/promises";
 import { ImageResponse } from "next/og";
 import { proposalCounts } from "@/data/proposalCounts";
 import { proposalListMetadata } from "@/utils/proposalListMetadata";
@@ -18,14 +19,16 @@ export const createProposalListOpenGraphImage = async (
   // which would blow the 1MB edge-function limit (validEIPs is ~365KB).
   const proposalCount = proposalCounts[kind];
 
-  const fontData = await fetch(
+  // Node runtime (see runtime = "nodejs" in the route files): read bundled
+  // assets from disk. Node's fetch rejects file:// URLs, but fs accepts the
+  // import.meta.url-relative URL, and Vercel's nft traces it so both ship.
+  const fontData = await readFile(
     new URL("../assets/Poppins-Bold.ttf", import.meta.url)
-  ).then((res) => res.arrayBuffer());
+  );
 
-  const imgArrayBuffer = await fetch(
+  const buffer = await readFile(
     new URL("../public/og/base.png", import.meta.url)
-  ).then((res) => res.arrayBuffer());
-  const buffer = Buffer.from(imgArrayBuffer);
+  );
   const imgUrl = `data:image/png;base64,${buffer.toString("base64")}`;
 
   return new ImageResponse(

@@ -11,15 +11,18 @@ export async function GET(req: Request) {
 
     const eipNo = parseInt(searchParams.get("eipNo")!);
     const type = searchParams.get("type") ?? "EIP";
-    // Slim precomputed index instead of the full valid-* arrays, which
-    // would blow the 1MB edge-function limit (see scripts/genOgIndex.ts).
+    // Slim precomputed index instead of the full valid-* arrays (see
+    // scripts/genOgIndex.ts). eipData may be undefined for an unknown
+    // eipNo — the ?? fallbacks below keep that from throwing.
     const eipData =
       type === "RIP"
         ? ogIndex.rip[eipNo]
         : type === "CAIP"
         ? ogIndex.caip[eipNo]
         : ogIndex.eip[eipNo];
-    const statusInfo = EIPStatus[eipData.status ?? "Draft"];
+    // Fall back to Draft styling for unknown/missing statuses so an
+    // unmapped status (e.g. one added upstream) never 500s the image.
+    const statusInfo = EIPStatus[eipData?.status ?? "Draft"] ?? EIPStatus.Draft;
 
     // Node runtime: read bundled assets from disk (Node's fetch rejects
     // file:// URLs; fs accepts the import.meta.url-relative URL, which
@@ -54,7 +57,7 @@ export async function GET(req: Request) {
               flexDirection: "column",
             }}
           >
-            {eipData.status && (
+            {eipData?.status && (
               <div
                 style={{
                   paddingLeft: "30px",
@@ -65,7 +68,7 @@ export async function GET(req: Request) {
                   maxWidth: "900px",
                 }}
               >
-                {statusInfo.prefix} {eipData.status}
+                {statusInfo.prefix} {eipData?.status}
               </div>
             )}
             <div
@@ -81,7 +84,7 @@ export async function GET(req: Request) {
                 ? "RIP"
                 : type === "CAIP"
                 ? "CAIP"
-                : eipData.isERC
+                : eipData?.isERC
                 ? "ERC"
                 : "EIP"}
               -{eipNo}
@@ -99,7 +102,7 @@ export async function GET(req: Request) {
                   fontSize: 70,
                 }}
               >
-                {eipData.title}
+                {eipData?.title}
               </div>
             </div>
           </div>

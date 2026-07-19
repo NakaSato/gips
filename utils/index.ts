@@ -156,6 +156,9 @@ export const STATUS_COLORS = {
   Final: "#287D49", // deep emerald
   Stagnant: "#E53E3E", // red.500
   Withdrawn: "#95A5A6", // gray.500
+  Living: "#2B6CB0", // blue.600 — perpetually maintained
+  Superseded: "#718096", // gray.600 — replaced by a newer proposal
+  New: "#9A6D16", // antique gold — freshly opened, not yet reviewed
 };
 
 export const EIPStatus: {
@@ -198,6 +201,24 @@ export const EIPStatus: {
     bg: STATUS_COLORS.Withdrawn,
     prefix: "🛑",
     description: "This EIP has been withdrawn, and should not be used.",
+  },
+  Living: {
+    bg: STATUS_COLORS.Living,
+    prefix: "♾️",
+    description:
+      "This EIP is designed to be continually updated and does not reach a state of finality.",
+  },
+  Superseded: {
+    bg: STATUS_COLORS.Superseded,
+    prefix: "🔁",
+    description:
+      "This EIP has been replaced by a newer proposal and should not be used.",
+  },
+  New: {
+    bg: STATUS_COLORS.New,
+    prefix: "🆕",
+    description:
+      "This EIP has just been proposed and has not yet been reviewed.",
   },
 };
 

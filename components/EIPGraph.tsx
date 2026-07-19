@@ -53,7 +53,9 @@ const EIPGraph = ({
   const [highlightNodes, setHighlightNodes] = useState(new Set());
   const [highlightLinks, setHighlightLinks] = useState(new Set());
   const [hoverNode, setHoverNode] = useState<GraphNode | null>(null);
-  const graphRef = useRef<ForceGraphMethods<GraphNode, any>>();
+  const graphRef = useRef<ForceGraphMethods<GraphNode, any> | undefined>(
+    undefined
+  );
   const [searchInput, setSearchInput] = useState("");
   const [searchSuggestions, setSearchSuggestions] = useState<Array<GraphNode>>(
     []

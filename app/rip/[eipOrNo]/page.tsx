@@ -1,7 +1,7 @@
 "use client";
 
 import NLink from "next/link";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, use } from "react";
 import { Markdown } from "@/components/Markdown";
 import {
   Container,
@@ -49,12 +49,13 @@ import { CopyToClipboard } from "@/components/CopyToClipboard";
 import { getProposalDetails, getProposalPrUrl } from "@/utils/proposals";
 
 const RIP = ({
-  params: { eipOrNo },
+  params,
 }: {
-  params: {
+  params: Promise<{
     eipOrNo: string; // can be of the form `1234`, `eip-1234` or `eip-1234.md` (standard followed by official EIP)
-  };
+  }>;
 }) => {
+  const { eipOrNo } = use(params);
   const router = useTopLoaderRouter();
 
   const eipNo = extractEipNumber(eipOrNo, "rip");

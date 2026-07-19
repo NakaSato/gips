@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { validEIPsArray } from "@/data/validEIPs";
-import neynarClient from "@/app/lib/neynar";
+import getNeynarClient from "@/app/lib/neynar";
 import crypto from "crypto";
 
 // Define allowed methods
@@ -129,7 +129,7 @@ export async function POST(req: Request) {
         }
 
         // Post the reply using Neynar client
-        const reply = await neynarClient.publishCast({
+        const reply = await getNeynarClient().publishCast({
           signerUuid: process.env.NEYNAR_SIGNER_UUID,
           text: replyText,
           embeds: [

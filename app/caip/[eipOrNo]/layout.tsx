@@ -9,10 +9,11 @@ import { validCAIPs } from "@/data/validCAIPs";
 import { getProposalDetails } from "@/utils/proposals";
 
 export async function generateMetadata({
-  params: { eipOrNo },
+  params,
 }: {
-  params: { eipOrNo: string };
+  params: Promise<{ eipOrNo: string }>;
 }) {
+  const { eipOrNo } = await params;
   const eipNo = extractEipNumber(eipOrNo, "caip");
   const validEIPData = getProposalDetails(validCAIPs, eipNo);
 
@@ -30,7 +31,7 @@ export async function generateMetadata({
   const postUrl = `${process.env["HOST"]}/api/frame/home`;
 
   const generated = getMetadata({
-    title: `CAIP-${eipNo}: ${validEIPData.title} | EIP.tools`,
+    title: `CAIP-${eipNo}: ${validEIPData.title} | IP.tools`,
     description: metadataJson.description,
     images: imageUrl,
   });

@@ -11,13 +11,15 @@ import { validRIPs } from "@/data/validRIPs";
 import { validCAIPs } from "@/data/validCAIPs";
 import { EIPStatus } from "@/utils";
 
-const openai = new OpenAI({
-  organization: process.env.OPENAI_ORG_ID,
-  project: null, // Default Project
-  apiKey: process.env.OPENAI_API_KEY,
-});
-
 export const POST = async (request: Request) => {
+  // Instantiate lazily so a missing OPENAI_API_KEY doesn't throw at
+  // build/module-eval time — only when a summary is actually requested.
+  const openai = new OpenAI({
+    organization: process.env.OPENAI_ORG_ID,
+    project: null, // Default Project
+    apiKey: process.env.OPENAI_API_KEY,
+  });
+
   // validate request body
   let body: AISummaryRequest;
   try {

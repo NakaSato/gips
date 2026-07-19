@@ -9,10 +9,11 @@ import { validEIPs } from "@/data/validEIPs";
 import { getProposalDetails } from "@/utils/proposals";
 
 export async function generateMetadata({
-  params: { eipOrNo },
+  params,
 }: {
-  params: { eipOrNo: string };
+  params: Promise<{ eipOrNo: string }>;
 }) {
+  const { eipOrNo } = await params;
   const eipNo = extractEipNumber(eipOrNo, "eip");
   const validEIPData = getProposalDetails(validEIPs, eipNo);
 
@@ -32,7 +33,7 @@ export async function generateMetadata({
   const generated = getMetadata({
     title: `${validEIPData.isERC ? "ERC" : "EIP"}-${eipNo}: ${
       validEIPData.title
-    } | EIP.tools`,
+    } | IP.tools`,
     description: metadataJson.description,
     images: imageUrl,
   });

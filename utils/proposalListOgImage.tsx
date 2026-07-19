@@ -1,7 +1,4 @@
 import { ImageResponse } from "next/og";
-import { validCAIPs } from "@/data/validCAIPs";
-import { validEIPs } from "@/data/validEIPs";
-import { validRIPs } from "@/data/validRIPs";
 import type { ValidEIPs } from "@/types";
 import { proposalListMetadata } from "@/utils/proposalListMetadata";
 import {
@@ -16,18 +13,25 @@ export const proposalListOgSize = {
 
 export const proposalListOgContentType = "image/png";
 
-const proposalsByKind: Record<ProposalListKind, ValidEIPs> = {
-  eip: validEIPs,
-  erc: validEIPs,
-  rip: validRIPs,
-  caip: validCAIPs,
+const loadProposalsByKind = async (
+  kind: ProposalListKind
+): Promise<ValidEIPs> => {
+  switch (kind) {
+    case "eip":
+    case "erc":
+      return (await import("@/data/validEIPs")).validEIPs;
+    case "rip":
+      return (await import("@/data/validRIPs")).validRIPs;
+    case "caip":
+      return (await import("@/data/validCAIPs")).validCAIPs;
+  }
 };
 
 export const createProposalListOpenGraphImage = async (
   kind: ProposalListKind
 ) => {
   const config = proposalListMetadata[kind];
-  const items = getProposalListItems(proposalsByKind[kind], kind);
+  const items = getProposalListItems(await loadProposalsByKind(kind), kind);
 
   const fontData = await fetch(
     new URL("../assets/Poppins-Bold.ttf", import.meta.url)

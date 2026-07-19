@@ -4,7 +4,7 @@ import { validEIPsArray } from "@/data/validEIPs";
 import { validRIPsArray } from "@/data/validRIPs";
 import { validCAIPsArray } from "@/data/validCAIPs";
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   // Get the pathname from the URL (e.g., /1234)
   const pathname = request.nextUrl.pathname;
 

@@ -4,7 +4,6 @@ import { EIPOfTheDay } from "@/components/EIPOfTheDay";
 import { Layout } from "@/components/Layout";
 import { TrendingEIPs } from "@/components/TrendingEIPs";
 import { UpcomingHardForkEIPs } from "@/components/UpcomingHardForkEIPs";
-import { EIPGraphSection } from "@/components/EIPGraphSection";
 import { ProposalDirectoryPills } from "@/components/ProposalDirectoryPills";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -12,7 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const postUrl = `${process.env["HOST"]}/api/frame/home`;
 
   const metadata = getMetadata({
-    title: "EIP.tools",
+    title: "IP.tools",
     description: "Explore all EIPs, ERCs, RIPs and CAIPs easily!",
     images: imageUrl,
   });
@@ -41,7 +40,6 @@ export default function Home() {
       <ProposalDirectoryPills />
       <TrendingEIPs />
       <UpcomingHardForkEIPs />
-      <EIPGraphSection />
       <EIPOfTheDay />
     </Layout>
   );

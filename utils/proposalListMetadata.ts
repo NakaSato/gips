@@ -15,14 +15,14 @@ export const proposalListMetadata: Record<
   ProposalListMetadata
 > = {
   eip: {
-    title: "All EIPs | EIP.tools",
+    title: "All EIPs | IP.tools",
     heading: "All EIPs",
     description: "Browse all Ethereum Improvement Proposals by proposal number.",
     imagePath: "eips/opengraph-image",
     accent: "#6ea8ff",
   },
   erc: {
-    title: "All ERCs | EIP.tools",
+    title: "All ERCs | IP.tools",
     heading: "All ERCs",
     description:
       "Browse all Ethereum Request for Comments proposals by proposal number.",
@@ -30,14 +30,14 @@ export const proposalListMetadata: Record<
     accent: "#8bdb81",
   },
   rip: {
-    title: "All RIPs | EIP.tools",
+    title: "All RIPs | IP.tools",
     heading: "All RIPs",
     description: "Browse all Rollup Improvement Proposals by proposal number.",
     imagePath: "rips/opengraph-image",
     accent: "#ffb86b",
   },
   caip: {
-    title: "All CAIPs | EIP.tools",
+    title: "All CAIPs | IP.tools",
     heading: "All CAIPs",
     description:
       "Browse all Chain Agnostic Improvement Proposals by proposal number.",

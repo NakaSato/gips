@@ -1,4 +1,4 @@
-# DESIGN.md - EIP.tools
+# DESIGN.md - IP.tools
 
 ## Context
 
@@ -8,7 +8,7 @@
 - Adjectives: coherent, minimal, professional, scannable, credible.
 - Visual word translations: coherent -> shared ETH.sh-style semantic tokens across every page. Minimal -> near-black base, defined edges, no decorative gradients. Professional -> restrained blue action color and clear table surfaces. Scannable -> row/card proposal blocks, compact metadata, predictable headings. Credible -> markdown source links, authors, statuses, and dependency graphs remain visible.
 - Aesthetic essence: technical, dark, exact.
-- Single-minded proposition: EIP.tools should feel like a focused standards workbench, not a marketing page.
+- Single-minded proposition: IP.tools should feel like a focused standards workbench, not a marketing page.
 - References: `~/blockchain/swiss-knife` for dark tool-page tokens, compact nav, semantic Chakra theme, defined edges, and restrained blue actions.
 - Mode: dark. Density: balanced to dense.
 - Constraints: Next.js app router, Chakra UI, no Tailwind, existing EIP/RIP/CAIP markdown rendering, WCAG 2.2 AA target, preserve search, reading list, graph, and proposal-fetch behavior.
@@ -188,5 +188,5 @@
 - 2026-07-02: Made the global search compact at rest and restore the wider result surface only while suggestions are visible.
 - 2026-07-02: Narrowed the global search input so it no longer dominates the header/search band on wider screens.
 - 2026-07-02: Slimmed the homepage proposal rail scrollbars to a 4px subtle thumb with a transparent track.
-- 2026-07-02: Fixed EIP.tools logo rendering in the header and footer by preserving the Ethereum mark's natural aspect ratio instead of forcing it into a square box.
-- 2026-07-02: Revamped EIP.tools to the dark minimal ETH.sh-style system from `swiss-knife`; added semantic tokens, Chakra theme, Inter and JetBrains Mono, redesigned nav/search/footer/home sections/detail pages/markdown/graphs, and documented the design contract.
+- 2026-07-02: Fixed IP.tools logo rendering in the header and footer by preserving the Ethereum mark's natural aspect ratio instead of forcing it into a square box.
+- 2026-07-02: Revamped IP.tools to the dark minimal ETH.sh-style system from `swiss-knife`; added semantic tokens, Chakra theme, Inter and JetBrains Mono, redesigned nav/search/footer/home sections/detail pages/markdown/graphs, and documented the design contract.

@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { Button, HStack, Text, ButtonProps } from "@chakra-ui/react";
 import { CopyIcon, CheckCircleIcon } from "@chakra-ui/icons";

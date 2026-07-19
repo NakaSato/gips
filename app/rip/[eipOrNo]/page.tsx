@@ -9,6 +9,7 @@ import {
   Center,
   Text,
   Table,
+  Tbody,
   Tr,
   Td,
   Th,
@@ -363,6 +364,7 @@ const RIP = ({
                 },
               }}
             >
+              <Tbody>
               {metadataJson.author && (
                 <Tr>
                   <Th>Authors</Th>
@@ -447,6 +449,7 @@ const RIP = ({
                   </Td>
                 </Tr>
               )}
+              </Tbody>
             </Table>
           </Box>
           </Box>

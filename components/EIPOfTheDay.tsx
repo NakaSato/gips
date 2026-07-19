@@ -9,6 +9,7 @@ import {
   Text,
   Tooltip,
   Table,
+  Tbody,
   Tr,
   Th,
   Td,
@@ -193,6 +194,7 @@ export const EIPOfTheDay = () => {
                 </Text>
                 <Box overflowX={"auto"}>
                   <Table variant="simple">
+                    <Tbody>
                     {metadataJson.author && (
                       <Tr>
                         <Th>Authors</Th>
@@ -257,6 +259,7 @@ export const EIPOfTheDay = () => {
                           </Td>
                         </Tr>
                       )}
+                    </Tbody>
                   </Table>
                 </Box>
               </Box>

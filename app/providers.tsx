@@ -8,11 +8,11 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 
 export const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
-    <CacheProvider>
-      <ChakraProvider theme={theme}>
-        <NextTopLoader color="#3B82F6" showSpinner={false} />
-        {children}
-      </ChakraProvider>
-    </CacheProvider>
+    <>
+      <NextTopLoader color="#3B82F6" showSpinner={false} />
+      <CacheProvider>
+        <ChakraProvider theme={theme}>{children}</ChakraProvider>
+      </CacheProvider>
+    </>
   );
 };

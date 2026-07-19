@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const postUrl = `${process.env["HOST"]}/api/frame/home`;
 
   const metadata = getMetadata({
-    title: "Shared Bookmarks - EIP.tools",
+    title: "Shared Bookmarks - IP.tools",
     description: "Explore the EIPs, ERCs, RIPs and CAIPs shared with you!",
     images: imageUrl,
   });

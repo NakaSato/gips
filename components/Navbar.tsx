@@ -6,7 +6,6 @@ import {
   Flex,
   Box,
   Badge,
-  Center,
   Heading,
   Link,
   HStack,
@@ -150,8 +149,8 @@ export const Navbar = () => {
         >
           <HStack spacing={{ base: 2, sm: 3 }}>
             <Image
-              alt="EIP.tools"
-              src="/eth.png"
+              alt="IP.tools"
+              src="/gridtokenx-logo.svg"
               h={{ base: "2rem", sm: "2.25rem" }}
               w="auto"
               objectFit="contain"
@@ -164,21 +163,19 @@ export const Navbar = () => {
               fontWeight="semibold"
               letterSpacing="-0.02em"
             >
-              EIP.tools
+              IP.tools
             </Heading>
           </HStack>
         </Link>
-        {isProposalPage && (
-          <Box
-            order={{ base: 3, lg: 2 }}
-            flex={{ base: "0 0 100%", lg: "1" }}
-            display="flex"
-            justifyContent="center"
-            minW={0}
-          >
-            <Searchbox />
-          </Box>
-        )}
+        <Box
+          order={{ base: 3, lg: 2 }}
+          flex={{ base: "0 0 100%", lg: "1" }}
+          display="flex"
+          justifyContent="center"
+          minW={0}
+        >
+          <Searchbox />
+        </Box>
         <Button
           order={{ base: 2, lg: 3 }}
           onClick={openDrawer}
@@ -194,20 +191,6 @@ export const Navbar = () => {
         </Button>
       </Flex>
       <NotificationBar />
-      {!isProposalPage && (
-        <Box
-          w="100%"
-          py={{ base: 5, md: 6 }}
-          px={4}
-          borderBottom="1px solid"
-          borderColor="border.subtle"
-          bg="bg.base"
-        >
-          <Center>
-            <Searchbox />
-          </Center>
-        </Box>
-      )}
 
       <Drawer isOpen={isDrawerOpen} onClose={closeDrawer} placement="right">
         <DrawerOverlay backdropFilter="blur(8px)" bg="blackAlpha.600" />

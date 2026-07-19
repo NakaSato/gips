@@ -5,7 +5,7 @@ import {
 } from "@/utils/proposalListOgImage";
 
 export const runtime = "edge";
-export const alt = "All CAIPs on EIP.tools";
+export const alt = "All CAIPs on IP.tools";
 export const size = proposalListOgSize;
 export const contentType = proposalListOgContentType;
 

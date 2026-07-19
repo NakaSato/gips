@@ -19,8 +19,8 @@ export async function POST(req: NextRequest) {
         `<!DOCTYPE html>
         <html>
           <head>
-            <title>EIP.tools</title>
-            <meta property="og:title" content="EIP.tools" />
+            <title>IP.tools</title>
+            <meta property="og:title" content="IP.tools" />
             <meta property="og:image" content="${imageUrl}" />
 
             <meta name="fc:frame" content="vNext" />
@@ -75,8 +75,8 @@ export async function POST(req: NextRequest) {
     `<!DOCTYPE html>
       <html>
         <head>
-          <title>EIP.tools</title>
-          <meta property="og:title" content="EIP.tools" />
+          <title>IP.tools</title>
+          <meta property="og:title" content="IP.tools" />
           <meta property="og:image" content="${imageUrl}" />
 
           <meta name="fc:frame" content="vNext" />

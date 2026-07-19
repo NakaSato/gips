@@ -1,5 +1,5 @@
 /**
- * EIP.tools design tokens, aligned with the dark minimal ETH.sh tool system.
+ * IP.tools design tokens, aligned with the dark minimal ETH.sh tool system.
  */
 
 export const colors = {

@@ -49,8 +49,8 @@ export const Footer = () => {
           <VStack align="flex-start" spacing={3} maxW="36rem">
             <HStack spacing={3}>
               <Image
-                src="/eth.png"
-                alt="EIP.tools"
+                src="/gridtokenx-logo.svg"
+                alt="IP.tools"
                 h="2.25rem"
                 w="auto"
                 objectFit="contain"
@@ -58,12 +58,14 @@ export const Footer = () => {
                 rounded="md"
               />
               <Heading fontWeight="semibold" fontSize="xl" color="text.primary">
-                EIP.tools
+                IP.tools
               </Heading>
             </HStack>
             <Text color="text.secondary" fontSize="sm" lineHeight="tall">
-              Search, read, and map Ethereum improvement proposals, ERCs, RIPs,
-              and CAIPs from one focused interface.
+              IP.tools is a focused workbench for Ethereum standards. Browse,
+              read, and cross-reference EIPs, ERCs, RIPs, and CAIPs, follow their
+              dependencies in an interactive graph, and skim AI summaries — all
+              in one place.
             </Text>
           </VStack>
 
@@ -74,7 +76,7 @@ export const Footer = () => {
                 href="https://github.com/apoorvlathey/eip-tools"
                 isExternal
                 _hover={{ color: "primary.400" }}
-                aria-label="EIP.tools on GitHub"
+                aria-label="IP.tools on GitHub"
               >
                 <FontAwesomeIcon icon={faGithub} size="lg" />
               </Link>
@@ -82,7 +84,7 @@ export const Footer = () => {
                 href="https://farcaster.xyz/eiptools/casts-and-replies"
                 isExternal
                 _hover={{ opacity: 0.8 }}
-                aria-label="EIP.tools on Farcaster"
+                aria-label="IP.tools on Farcaster"
               >
                 <Image
                   src="/farcaster-logo.svg"

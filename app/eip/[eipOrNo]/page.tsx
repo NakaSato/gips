@@ -9,6 +9,7 @@ import {
   Center,
   Text,
   Table,
+  Tbody,
   Tr,
   Td,
   Th,
@@ -400,6 +401,7 @@ const EIP = ({
                 },
               }}
             >
+              <Tbody>
               {metadataJson.author && (
                 <Tr>
                   <Th>Authors</Th>
@@ -506,6 +508,7 @@ const EIP = ({
                   </Td>
                 </Tr>
               )}
+              </Tbody>
             </Table>
           </Box>
           </Box>

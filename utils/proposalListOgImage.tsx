@@ -1,10 +1,7 @@
 import { ImageResponse } from "next/og";
-import type { ValidEIPs } from "@/types";
+import { proposalCounts } from "@/data/proposalCounts";
 import { proposalListMetadata } from "@/utils/proposalListMetadata";
-import {
-  getProposalListItems,
-  type ProposalListKind,
-} from "@/utils/proposals";
+import type { ProposalListKind } from "@/utils/proposals";
 
 export const proposalListOgSize = {
   width: 2144,
@@ -13,25 +10,13 @@ export const proposalListOgSize = {
 
 export const proposalListOgContentType = "image/png";
 
-const loadProposalsByKind = async (
-  kind: ProposalListKind
-): Promise<ValidEIPs> => {
-  switch (kind) {
-    case "eip":
-    case "erc":
-      return (await import("@/data/validEIPs")).validEIPs;
-    case "rip":
-      return (await import("@/data/validRIPs")).validRIPs;
-    case "caip":
-      return (await import("@/data/validCAIPs")).validCAIPs;
-  }
-};
-
 export const createProposalListOpenGraphImage = async (
   kind: ProposalListKind
 ) => {
   const config = proposalListMetadata[kind];
-  const items = getProposalListItems(await loadProposalsByKind(kind), kind);
+  // Use the precomputed count instead of loading the full valid-* arrays,
+  // which would blow the 1MB edge-function limit (validEIPs is ~365KB).
+  const proposalCount = proposalCounts[kind];
 
   const fontData = await fetch(
     new URL("../assets/Poppins-Bold.ttf", import.meta.url)
@@ -80,7 +65,7 @@ export const createProposalListOpenGraphImage = async (
               transform: "translateY(5px)",
             }}
           >
-            {items.length} proposals
+            {proposalCount} proposals
           </div>
         </div>
         <div

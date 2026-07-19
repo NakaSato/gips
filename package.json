@@ -8,8 +8,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "eip": "tsx ./scripts/getWIPEIPsFromPRs.ts && git submodule update --remote && tsx ./scripts/fetchValidEIPs.ts && tsx ./scripts/genEIPDependencyGraph.ts",
-    "gen-graph": "tsx ./scripts/genEIPDependencyGraph.ts"
+    "eip": "tsx ./scripts/getWIPEIPsFromPRs.ts && git submodule update --remote && tsx ./scripts/fetchValidEIPs.ts && tsx ./scripts/genEIPDependencyGraph.ts && tsx ./scripts/genProposalCounts.ts",
+    "gen-graph": "tsx ./scripts/genEIPDependencyGraph.ts",
+    "gen-counts": "tsx ./scripts/genProposalCounts.ts"
   },
   "dependencies": {
     "@chakra-ui/cli": "^3.8.1",
